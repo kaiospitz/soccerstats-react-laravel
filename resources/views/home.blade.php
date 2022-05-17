@@ -8,6 +8,7 @@
     <title>RakeStats</title>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/global.css') }}" />
 </head>
 
 <body>
