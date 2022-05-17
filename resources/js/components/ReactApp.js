@@ -1,7 +1,8 @@
-import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
-const root = ReactDOM.createRoot(document.getElementById("app"));
+const root = ReactDOM.createRoot(document.getElementById('app'))
 root.render(
     <BrowserRouter>
         <Routes>
@@ -9,7 +10,7 @@ root.render(
             <Route path="/test" element={<Test />}></Route>
         </Routes>
     </BrowserRouter>
-);
+)
 
 function Home() {
     return (
@@ -19,7 +20,7 @@ function Home() {
                 <Link to="/">Home</Link> | <Link to="/test">Test</Link>
             </nav>
         </div>
-    );
+    )
 }
 
 function Test() {
@@ -30,5 +31,5 @@ function Test() {
                 <Link to="/">Home</Link> | <Link to="/test">Test</Link>
             </nav>
         </div>
-    );
+    )
 }
