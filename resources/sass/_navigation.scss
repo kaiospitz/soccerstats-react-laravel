@@ -1,0 +1,64 @@
+#navigation {
+    padding: 20px 25px;
+
+    .breadcrumbs {
+        color: #666;
+        font-size: 14px;
+        line-height: 20px;
+        display: block;
+    }
+
+    .leagueName {
+        font-size: 36px;
+        line-height: 60px;
+    }
+
+    .endpoint {
+        font-size: 32px;
+        line-height: 54px;
+        color: #707070;
+        margin-left: 25px;
+        display: inline-block;
+
+        &:first-letter {
+            text-transform: uppercase;
+        }
+    }
+
+    .navWrapper {
+        border-top: 1px solid #dcdcdc;
+        border-bottom: 1px solid #dcdcdc;
+        margin: 10px 0px;
+
+        ul {
+            margin: 0;
+            padding: 0;
+
+            li {
+                display: inline-block;
+                padding: 10px 15px;
+                width: 75px;
+                text-align: center;
+
+                &:hover {
+                    background-color: #ebebeb;
+                }
+            }
+
+            .active {
+                position: relative;
+                font-weight: 700;
+
+                &:after {
+                    content: '';
+                    background: #214cb8;
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    height: 2px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

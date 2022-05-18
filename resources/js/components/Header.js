@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+/**
+ * Header
+ */
 const Header = () => {
     return (
-        <div className="header">
+        <div id="header" className="wrapper">
             <Link to="/">
-                <span>
-                    Rake<strong>Stats</strong>
+                <span className="logo">
+                    Soccer<strong>Stats</strong>
                 </span>
             </Link>
         </div>
