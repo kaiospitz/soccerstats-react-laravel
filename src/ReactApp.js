@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Layout from './Layout'
-import Results from '../pages/Results'
-import Fixtures from '../pages/Fixtures'
-import Table from '../pages/Table'
+import Layout from './parts/Layout'
+import Results from './pages/Results'
+import Fixtures from './pages/Fixtures'
+import Table from './pages/Table'
 
 /**
  * Renders the router to the root
