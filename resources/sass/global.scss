@@ -1,7 +1,6 @@
 @import '_fonts';
 @import '_header';
 @import '_navigation';
-@import '_home';
 @import '_loading';
 @import '_results';
 
@@ -46,4 +45,10 @@ img {
 
 #content {
     padding: 20px 25px;
+}
+
+@media screen and (max-width: 500px) {
+    #content {
+        padding: 20px 10px;
+    }
 }
