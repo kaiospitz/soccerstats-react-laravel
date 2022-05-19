@@ -89,17 +89,15 @@ const EventWrapper = (props) => {
                                     </span>
                                 )}
                             </>
-                            <Link to={`/event/${event.idEvent}`}>
-                                <Event
-                                    key={event.idEvent}
-                                    homeScore={event.intHomeScore}
-                                    awayScore={event.intAwayScore}
-                                    awayTeamName={event.strAwayTeam}
-                                    homeTeamName={event.strHomeTeam}
-                                    type={props.eventState}
-                                    kickoffTime={event.strTimestamp}
-                                />
-                            </Link>
+                            <Event
+                                key={event.idEvent}
+                                homeScore={event.intHomeScore}
+                                awayScore={event.intAwayScore}
+                                awayTeamName={event.strAwayTeam}
+                                homeTeamName={event.strHomeTeam}
+                                type={props.eventState}
+                                kickoffTime={event.strTimestamp}
+                            />
                         </>
                     )}
                 </>

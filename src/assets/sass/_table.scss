@@ -1,0 +1,145 @@
+.sortedTable {
+    width: 100%;
+    border-spacing: 0px;
+    border-collapse: collapse;
+    margin: 0 0 50px 0;
+
+    thead {
+        th {
+            cursor: pointer;
+            font-weight: 200;
+            padding: 10px;
+
+            .thWrapper {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        // Header
+        tr:nth-child(1) {
+            th {
+                padding: 0;
+            }
+            .headerWrapper {
+                background: #011b51;
+                text-align: center;
+                color: #fff;
+                padding: 20px;
+                display: block;
+                font-size: 18px;
+                line-height: 18px;
+                width: 100%;
+                font-weight: 300;
+                cursor: auto;
+            }
+        }
+
+        // First row
+        tr:nth-child(2) {
+            background-color: #f4f4f4;
+        }
+
+        .downArrow {
+            background: url(/images/down_arrow.png?57d4c05…);
+            width: 10px;
+            height: 10px;
+            display: block;
+            background-size: contain;
+            margin-left: 5px;
+            background-repeat: no-repeat;
+        }
+
+        .upArrow {
+            background: url(/images/down_arrow.png?57d4c05…);
+            width: 10px;
+            height: 10px;
+            display: block;
+            background-size: contain;
+            margin-left: 5px;
+            background-repeat: no-repeat;
+            transform: rotate(180deg);
+        }
+    }
+
+    tbody {
+        tr {
+            &:hover {
+                background-color: rgba(0, 0, 0, 0.08);
+            }
+            td {
+                border-bottom: 1px solid rgb(0 0 0 / 8%);
+                padding: 10px;
+            }
+        }
+    }
+}
+
+/**
+* Hide form column
+*/
+@media screen and (max-width: 740px) {
+    .sortedTable thead tr th:nth-child(11) {
+        display: none;
+    }
+    .sortedTable tbody tr td:nth-child(11) {
+        display: none;
+    }
+}
+
+/**
+* Hide goals against column
+*/
+@media screen and (max-width: 600px) {
+    .sortedTable thead tr th:nth-child(8) {
+        display: none;
+    }
+    .sortedTable tbody tr td:nth-child(8) {
+        display: none;
+    }
+}
+
+/**
+* Hide goals for column
+*/
+@media screen and (max-width: 530px) {
+    .sortedTable thead tr th:nth-child(7) {
+        display: none;
+    }
+    .sortedTable tbody tr td:nth-child(7) {
+        display: none;
+    }
+}
+
+/**
+* Hide draws and losses for column
+*/
+@media screen and (max-width: 460px) {
+    .sortedTable thead tr th:nth-child(5) {
+        display: none;
+    }
+    .sortedTable tbody tr td:nth-child(5) {
+        display: none;
+    }
+    .sortedTable thead tr th:nth-child(6) {
+        display: none;
+    }
+    .sortedTable tbody tr td:nth-child(6) {
+        display: none;
+    }
+}
+
+/**
+* Hide wins for column
+*/
+@media screen and (max-width: 390px) {
+    .sortedTable thead tr th:nth-child(3) {
+        display: none;
+    }
+    .sortedTable tbody tr td:nth-child(3) {
+        display: none;
+    }
+    .sortedTable tbody tr td {
+        padding: 5px;
+    }
+}
