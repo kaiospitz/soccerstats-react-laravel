@@ -2,8 +2,22 @@
 @import '_header';
 @import '_navigation';
 @import '_home';
+@import '_loading';
+@import '_results';
 
-$gridSize: 1250px;
+/*
+CSS Preload Images
+*/
+body::after {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    z-index: -1;
+    content: url('../assets/images/ball.png');
+}
+
+$gridSize: 800px;
 
 body {
     margin: 0;

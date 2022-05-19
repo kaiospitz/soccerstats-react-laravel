@@ -1,0 +1,75 @@
+.resultsWrapper {
+    .eventMonth {
+        font-size: 29px;
+        line-height: 35px;
+        display: block;
+        text-align: center;
+        font-weight: 200;
+        margin: 50px 0 0 0;
+    }
+    .eventWrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid #dcdcdc;
+        padding: 7px 0;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+            opacity: 1;
+        }
+
+        .homeTeamName {
+            font-size: 16px;
+            line-height: 23px;
+            font-weight: 500;
+            padding: 5px 0;
+            width: 150px;
+            text-align: right;
+            padding: 5px 10px;
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .awayTeamName {
+            font-size: 16px;
+            line-height: 23px;
+            font-weight: 500;
+            padding: 5px 0;
+            width: 150px;
+            text-align: left;
+            padding: 5px 10px;
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .scoreWrapper {
+            background: #d6181f;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            width: 50px;
+            justify-content: center;
+            height: 25px;
+
+            span {
+                margin: 0 5px;
+            }
+        }
+    }
+    .eventDate {
+        background: #011b51;
+        text-align: center;
+        color: #fff;
+        padding: 0.65em 0;
+        display: block;
+        font-size: 18px;
+        line-height: 18px;
+        margin: 25px 0 0 0;
+        font-weight: 500;
+    }
+}

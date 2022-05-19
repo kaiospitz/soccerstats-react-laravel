@@ -6,12 +6,14 @@ import { Link } from 'react-router-dom'
  */
 const Header = () => {
     return (
-        <div id="header" className="wrapper">
-            <Link to="/">
-                <span className="logo">
-                    Soccer<strong>Stats</strong>
-                </span>
-            </Link>
+        <div id="header">
+            <div className="wrapper">
+                <Link to="/">
+                    <span className="logo">
+                        Soccer<strong>Stats</strong>
+                    </span>
+                </Link>
+            </div>
         </div>
     )
 }
