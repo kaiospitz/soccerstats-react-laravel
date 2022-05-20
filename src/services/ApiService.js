@@ -1,9 +1,21 @@
-const eventsEndpoint =
-    'https://www.thesportsdb.com/api/v1/json/50130162/eventsseason.php?id=4328&s=2021-2022'
+/**
+ * Set the API url's according to the enviroment
+ */
+const currEnviroment = process.env.APP_ENV
+let baseApiUrl = ''
 
-const tablesEndpoint =
-    'https://www.thesportsdb.com/api/v1/json/2/lookuptable.php?l=4328&s=2021-2022'
+if (currEnviroment == 'production') {
+    baseApiUrl = process.env.PRODUCTION_API_URL
+} else if (currEnviroment == 'development') {
+    baseApiUrl = process.env.DEVELOPMENT_API_URL
+}
 
+const eventsEndpoint = baseApiUrl + '/api/events'
+const tablesEndpoint = baseApiUrl + '/api/tables'
+
+/**
+ * API Client
+ */
 export default {
     getAllEvents: async function () {
         const result = await fetch(eventsEndpoint)

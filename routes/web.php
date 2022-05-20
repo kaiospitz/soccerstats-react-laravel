@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('home');
-});*/
-
+/**
+ * Redirect all requests to React
+ */
 Route::view('/{path?}', 'home')
-    ->where('path', '.*')
+    ->where('path', '^(?!api).*$')
     ->name('react');
