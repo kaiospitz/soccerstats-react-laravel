@@ -10,4 +10,4 @@ mix.webpackConfig((webpack) => {
 
 mix.sass('src/assets/sass/global.scss', 'public/css')
 
-mix.js('src/app.js', 'public/js').react()
+mix.js('src/app.js', 'public/js').version().react()
