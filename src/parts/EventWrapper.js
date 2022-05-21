@@ -70,11 +70,11 @@ const EventWrapper = (props) => {
         <div className="resultsWrapper">
             {props.data.map((event) => (
                 <>
-                    {/* Limits depending on current page */}
+                    {/* Filters depending on current page */}
                     {event.strStatus === searchStatusString && (
                         <>
                             <>
-                                {/* Check if we should print the month and year string */}
+                                {/* Check if we should print the month and year header */}
                                 {shouldIPrintMonth(event.dateEvent) && (
                                     <span className="eventMonth">
                                         {lastMonthString}
@@ -82,7 +82,7 @@ const EventWrapper = (props) => {
                                 )}
                             </>
                             <>
-                                {/* Check if we should print the date string */}
+                                {/* Check if we should print the date header */}
                                 {shouldIPrintDate(event.dateEvent) && (
                                     <span className="eventDate">
                                         {lastDateString}
@@ -102,6 +102,14 @@ const EventWrapper = (props) => {
                     )}
                 </>
             ))}
+            {/* if lastDateString=='' then no events were processed;
+                check if this is the fixtures page;
+                if so this means the season has ended; display the message */}
+            {lastDateString === '' && props.eventState === 'fixtures' && (
+                <span className="finishedSeason">
+                    The 2021-22 season has already ended.
+                </span>
+            )}
         </div>
     )
 }
