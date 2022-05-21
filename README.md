@@ -6,6 +6,7 @@ The data is retrieved from an external API.
 ## Stack
 
 Frontend: React
+
 Backend: Laravel
 
 ## Live Demo
