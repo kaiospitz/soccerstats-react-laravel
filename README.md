@@ -1,11 +1,16 @@
-## SoccesStats
+## Portfolio Project
 
-A site for soccer stats.
+A project that displays some soccer data like results, fixtures and table.
+The data is retrieved from an external API.
 
-Frontend created in React, backend created in Laravel.
+## Stack
 
-Live Demo: https://soccerstats.kaiospitz.com.br/
+Frontend: React
+Backend: Laravel
 
+## Live Demo
+
+https://soccerstats.kaiospitz.com.br/
 
 ## Build Setup
 
