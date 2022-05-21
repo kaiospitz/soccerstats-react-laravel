@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SoccerStats</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/global.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ mix('css/global.css') }}" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-21BWQ1V4C4"></script>

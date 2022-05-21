@@ -8,6 +8,6 @@ mix.webpackConfig((webpack) => {
     }
 })
 
-mix.sass('src/assets/sass/global.scss', 'public/css')
+mix.sass('src/assets/sass/global.scss', 'public/css').version()
 
 mix.js('src/app.js', 'public/js').version().react()
