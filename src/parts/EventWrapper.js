@@ -68,14 +68,16 @@ const EventWrapper = (props) => {
 
     return (
         <div className="resultsWrapper">
-            {props.data.map((event) => (
+            {props.data.slice(100).map((event) => (
                 <>
                     {/* Filters depending on current page */}
-                    {event.strStatus === searchStatusString && (
+                    {event.eventData[0].strStatus === searchStatusString && (
                         <>
                             <>
                                 {/* Check if we should print the month and year header */}
-                                {shouldIPrintMonth(event.dateEvent) && (
+                                {shouldIPrintMonth(
+                                    event.eventData[0].dateEvent
+                                ) && (
                                     <span className="eventMonth">
                                         {lastMonthString}
                                     </span>
@@ -83,20 +85,28 @@ const EventWrapper = (props) => {
                             </>
                             <>
                                 {/* Check if we should print the date header */}
-                                {shouldIPrintDate(event.dateEvent) && (
+                                {shouldIPrintDate(
+                                    event.eventData[0].dateEvent
+                                ) && (
                                     <span className="eventDate">
                                         {lastDateString}
                                     </span>
                                 )}
                             </>
                             <Event
-                                key={event.idEvent}
-                                homeScore={event.intHomeScore}
-                                awayScore={event.intAwayScore}
-                                awayTeamName={event.strAwayTeam}
-                                homeTeamName={event.strHomeTeam}
+                                key={event.eventData[0].idEvent}
+                                homeScore={event.eventData[0].intHomeScore}
+                                awayScore={event.eventData[0].intAwayScore}
+                                awayTeamName={event.eventData[0].strAwayTeam}
+                                homeTeamName={event.eventData[0].strHomeTeam}
                                 type={props.eventState}
-                                kickoffTime={event.strTimestamp}
+                                kickoffTime={event.eventData[0].strTimestamp}
+                                homeTeamBadge={
+                                    event.homeTeamData[0].strTeamBadge
+                                }
+                                awayTeamBadge={
+                                    event.awayTeamData[0].strTeamBadge
+                                }
                             />
                         </>
                     )}

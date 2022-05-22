@@ -21,7 +21,6 @@ export default {
         const result = await fetch(eventsEndpoint)
             .then((res) => res.json())
             .then((res) => {
-                //console.log(res)
                 return res
             })
             .catch(() => {
@@ -34,12 +33,10 @@ export default {
         // Wait for fetch to finish before returning our data
         if (result) {
             // Check if we recieved our expected data
-            if (result.events) {
-                return result.events
-            } else {
-                // Bad reponse, throw error
-                throw new Error('Unexpected data')
-            }
+            return result
+        } else {
+            // Bad reponse, throw error
+            throw new Error('Unexpected data')
         }
     },
 
@@ -47,7 +44,6 @@ export default {
         const result = await fetch(tablesEndpoint)
             .then((res) => res.json())
             .then((res) => {
-                //console.log(res)
                 return res
             })
             .catch(() => {

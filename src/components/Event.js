@@ -11,6 +11,8 @@ const Event = (props) => {
         homeTeamName,
         type,
         kickoffTime,
+        homeTeamBadge,
+        awayTeamBadge,
     } = props
 
     let displayDateString = ''
@@ -26,7 +28,10 @@ const Event = (props) => {
 
     return (
         <div className="eventWrapper">
-            <div className="homeTeamName">{homeTeamName}</div>
+            <div className="homeTeamName">
+                {homeTeamName}{' '}
+                <img className="teamBadger" src={homeTeamBadge} />
+            </div>
             {/* Display the score on results */}
             {type === 'results' && (
                 <div className="scoreWrapper">
@@ -41,7 +46,10 @@ const Event = (props) => {
                 <div className="dateWrapper">{displayDateString}</div>
             )}
 
-            <div className="awayTeamName">{awayTeamName}</div>
+            <div className="awayTeamName">
+                <img className="teamBadger" src={`${awayTeamBadge}`} />
+                {awayTeamName}{' '}
+            </div>
         </div>
     )
 }

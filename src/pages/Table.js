@@ -119,10 +119,7 @@ const TablePage = () => {
     )
 
     if (tableData && !isLoading) {
-        {
-            /* Succesfull render */
-        }
-        console.log(tableData.table)
+        /* Succesfull render */
         /* Render table */
         return (
             <div className="wrapper">
@@ -130,9 +127,7 @@ const TablePage = () => {
             </div>
         )
     } else {
-        {
-            /* Loading, show spinner */
-        }
+        /* Loading, show spinner */
         return <div className="wrapper">{LoadingSpinner()}</div>
     }
 }

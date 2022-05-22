@@ -22,6 +22,10 @@ class ApiClient
             'l' => '4328',
             's' => '2021-2022'
         ],
+        'leagueTeamDataEndpoint' => '/lookup_all_teams.php',
+        'leagueTeamDataQuery' => [
+            'id' => '4328'
+        ]
     ];
 
     /**
@@ -34,11 +38,13 @@ class ApiClient
      * Response data
      */
     public $responseData = '';
+    public $responseLeagueTeamData = [];
+    public $responseDataFinal = [];
 
     /**
      * Fetch the events data from the API
      */
-    function fetch($endpoint)
+    function fetchEvents($endpoint)
     {
 
         /**
@@ -58,7 +64,7 @@ class ApiClient
          */
         if ($statusCode !== 200) {
             $this->requestHasFailed = true;
-            $this->requestErrorCode = 'request_fail';
+            $this->requestErrorCode = 'fetchEvents_request_fail';
             return;
         } else {
 
@@ -69,14 +75,14 @@ class ApiClient
                 // Check for correct results data
                 if (!isset($responseJSON['events'])) {
                     $this->authHasFailed = true;
-                    $this->authErrorCode = 'bad_response';
+                    $this->authErrorCode = 'fetchEvents_bad_response';
                     return;
                 }
             } else if ($endpoint == 'tables') {
                 // Check for correct table data
                 if (!isset($responseJSON['table'])) {
                     $this->authHasFailed = true;
-                    $this->authErrorCode = 'bad_response';
+                    $this->authErrorCode = 'fetchEvents_bad_response';
                     return;
                 }
             }
@@ -85,6 +91,92 @@ class ApiClient
              * Successful request;
              */
             $this->responseData = $responseJSON;
+        }
+    }
+
+
+    /**
+     * Fetch league team data
+     */
+    function fetchLeagueTeamData()
+    {
+        /**
+         * Set the url and queries
+         */
+        $response = Http::get($this->apiBaseUrl . $this->apiEndpoints['leagueTeamDataEndpoint'], $this->apiEndpoints['leagueTeamDataQuery']);
+
+        $statusCode = $response->status();
+        $responseJSON = json_decode($response->getBody(), true);
+
+        /**
+         * Check for unexpected response codes
+         */
+        if ($statusCode !== 200) {
+            $this->requestHasFailed = true;
+            $this->requestErrorCode = 'fetchLeagueTeamData_request_fail';
+            return;
+        } else {
+
+            /**
+             * Check if all expected data are in our response
+             */
+            if (!isset($responseJSON['teams'])) {
+                $this->authHasFailed = true;
+                $this->authErrorCode = 'fetchLeagueTeamData_bad_response';
+                return;
+            }
+        }
+
+        /**
+         * Successful request;
+         * Create a new array where the team's ID is the array key
+         * So we can call it in the future with $this->responseLeagueTeamData[15851]
+         * instead of having to loop search through the array everytime we want to grab
+         * some data from this object for a specific team
+         */
+        $tempArray = [];
+        $object = json_decode(json_encode($responseJSON), FALSE);
+
+        $object = $object->teams;
+
+        foreach ($object as $row) {
+            $tempArray[$row->idTeam] = $row;
+        }
+
+        $this->responseLeagueTeamData = $tempArray;
+    }
+
+    /**
+     * Merge fetchEvents and fetchLeagueTeamData
+     * Events data does not contain data such as team logo and stadium name
+     * So we merge with the fetchLeagueTeamData that contains all this extra information we need
+     * Returns an array cotaining the event data, home team and away team data
+     */
+    function mergeEventsAndTeamData()
+    {
+        $tempArray = [];
+        $object = json_decode(json_encode($this->responseData), FALSE);
+
+        $object = $object->events;
+
+        // Iterates the events object
+        foreach ($object as $event) {
+            $tempArray = [
+                // all event data from fetchEvents
+                'eventData' => [
+                    $event
+                ],
+                // all event data from fetchLeagueTeamData related to this team
+                'homeTeamData' => [
+                    $this->responseLeagueTeamData[$event->idHomeTeam]
+                ],
+                // all event data from fetchLeagueTeamData related to this team
+                'awayTeamData' => [
+                    $this->responseLeagueTeamData[$event->idAwayTeam]
+                ]
+            ];
+
+            array_push($this->responseDataFinal, $tempArray);
         }
     }
 }

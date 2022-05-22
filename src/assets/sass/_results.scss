@@ -31,6 +31,12 @@
             width: 150px;
             text-align: right;
             padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            .teamBadger {
+                margin-left: 10px;
+            }
             &:hover {
                 opacity: 1;
             }
@@ -44,6 +50,11 @@
             width: 150px;
             text-align: left;
             padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            .teamBadger {
+                margin-right: 10px;
+            }
             &:hover {
                 opacity: 1;
             }
@@ -63,6 +74,10 @@
             span {
                 margin: 0 5px;
             }
+        }
+
+        .teamBadger {
+            width: 32px;
         }
     }
     .eventDate {

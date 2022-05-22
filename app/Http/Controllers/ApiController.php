@@ -12,8 +12,11 @@ class ApiController extends Controller
         // Initiate a new API client
         $api = new ApiClient;
 
+        // Fetch league team data
+        $api->fetchLeagueTeamData();
+
         // Fetch data from the events endpoit
-        $api->fetch('results');
+        $api->fetchEvents('results');
 
         /**
          * Catch any errors in the API request
@@ -24,9 +27,15 @@ class ApiController extends Controller
         }
 
         /**
+         * Merge the events data with the team data, there two come from two differente
+         * enpoints so we need to merge them to serve it in one response
+         */
+        $api->mergeEventsAndTeamData();
+
+        /**
          * Succesfull API request, respond with data
          */
-        return response()->json($api->responseData, 200);
+        return response()->json($api->responseDataFinal, 200);
     }
 
     public function tables(Request $request)
@@ -35,7 +44,7 @@ class ApiController extends Controller
         $api = new ApiClient;
 
         // Fetch data from the events endpoit
-        $api->fetch('tables');
+        $api->fetchEvents('tables');
 
         /**
          * Catch any errors in the API request
