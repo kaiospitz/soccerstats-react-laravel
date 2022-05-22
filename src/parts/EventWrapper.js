@@ -1,5 +1,5 @@
+/* eslint-disable indent */
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Event from '../components/Event'
 
 /**
@@ -32,16 +32,44 @@ const EventWrapper = (props) => {
     }
 
     /**
+     * Return ordinal string for the day
+     */
+    const nth = function (d) {
+        if (d > 3 && d < 21) return 'th'
+        switch (d % 10) {
+            case 1:
+                return 'st'
+            case 2:
+                return 'nd'
+            case 3:
+                return 'rd'
+            default:
+                return 'th'
+        }
+    }
+
+    /**
      * Check if we should to print the date string
      */
     const shouldIPrintDate = (eventDate) => {
         const date = new Date(eventDate)
-        const dateString = date.toLocaleString('en-GB', {
+        const dateWeekday = date.toLocaleString('en-GB', {
             timeZone: 'Europe/London',
             weekday: 'long',
+        })
+
+        const dateDay = date.toLocaleString('en-GB', {
+            timeZone: 'Europe/London',
             day: 'numeric',
+        })
+
+        const dateMonth = date.toLocaleString('en-GB', {
+            timeZone: 'Europe/London',
             month: 'long',
         })
+
+        const dateString =
+            dateWeekday + ' ' + dateDay + nth(dateDay) + ' ' + dateMonth
 
         /**
          * Check if this event's date has already been displayed;
@@ -68,7 +96,7 @@ const EventWrapper = (props) => {
 
     return (
         <div className="resultsWrapper">
-            {props.data.slice(100).map((event) => (
+            {props.data.map((event) => (
                 <>
                     {/* Filters depending on current page */}
                     {event.eventData[0].strStatus === searchStatusString && (
